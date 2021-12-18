@@ -4,45 +4,45 @@ const { Tag, Product, ProductTag } = require('../../models');
 // The `/api/tags` endpoint
 
 router.get('/', async (req, res) => {
-  // find all categories
-  // be sure to include its associated Products
-  const tagData = await Tag.findAll({
-    attributes: ['tag_name'],
-    include: {
-      model: Product,
-      attributes: {
-        exclude: ['id', 'tag_id']
+  // find all categories and include each's associated Products
+  try {
+    const tagData = await Tag.findAll({
+      attributes: ['tag_name'],
+      include: {
+        model: Product,
+        attributes: {
+          exclude: ['id', 'tag_id']
+        }
       }
-    }
-  });
-  return res.status(200).json(tagData);
+    });
+    return res.status(200).json(tagData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 router.get('/:id', async (req, res) => {
-  // Validate input
-  let getId = req.params.id;
-  if (isNaN(getId))
-    return res.status(400).json(`Invalid parameter "${getId}"`);
-  else
-    getId = parseInt(getId);
-  // find one tag by its `id` value
-  // be sure to include its associated Products
-  const tagData = await Tag.findOne({
-    where: {
-      id: getId
-    },
-    attributes: ['tag_name'],
-    include: {
-      model: Product,
-      attributes: {
-        exclude: ['id', 'tag_id']
+  // find one tag by its `id` value and include its associated Products
+  try {
+    const tagData = await Tag.findOne({
+      where: {
+        id: req.params.id
+      },
+      attributes: ['tag_name'],
+      include: {
+        model: Product,
+        attributes: {
+          exclude: ['id', 'tag_id']
+        }
       }
-    }
-  });
-  if (!tagData)
-    return res.status(404).json(`Tag with ID "${getId}" not found.`);
-  else
-    return res.status(200).json(tagData);
+    });
+    if (!tagData)
+      return res.status(404).json(`Tag with ID "${req.params.id}" not found.`);
+    else
+      return res.status(200).json(tagData);
+  } catch (err) {
+    return res.status(400).json(err);
+  }
 });
 
 router.post('/', async (req, res) => {
