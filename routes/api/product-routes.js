@@ -34,7 +34,7 @@ router.get('/:id', async (req, res) => {
   try {
     const productData = await Product.findOne({
       where: {
-        id: getId
+        id: req.params.id
       },
       attributes: {
         exclude: ['id']
@@ -52,7 +52,7 @@ router.get('/:id', async (req, res) => {
       }]
     });
     if (!productData)
-      return res.status(404).json(`Product with ID "${getId}" not found.`);
+      return res.status(404).json(`Product with ID "${req.params.id}" not found.`);
     else
       return res.status(200).json(productData);
   } catch (err) {
