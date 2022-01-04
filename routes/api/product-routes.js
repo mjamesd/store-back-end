@@ -152,7 +152,7 @@ router.put('/:id', async (req, res) => {
           return res.status(400).json(`ProductTag.bulkCreate Error: ${err}`);
         }
 
-        return res.status(200).json(updatedProductTags);
+        return res.status(200).json(`Product updated with new tags.`);
       } catch (err) {
         return res.status(400).json(`ProductTag Error: ${err}`);
       }
