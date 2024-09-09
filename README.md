@@ -29,8 +29,9 @@ THEN I am able to successfully create, update, and delete data in my database
 1. [Description & User Stories](#description)
 2. [Installation](#installation)
 3. [Usage](#usage)
-4. [License](#license)
-5. [Questions](#questions)
+4. [Demonstration](#demonstration)
+5. [License](#license)
+6. [Questions](#questions)
 
 ## Installation
 
@@ -44,13 +45,17 @@ Next, the demonstration video shows how to seed the database with information. F
 
 ## Usage
 
-After creating and seeding the database, start the Express.js server by running this command from the command line:
+After creating and seeding the database, install dependencies and start the Express.js server by running this command from the command line:
 
 ```
 npm run start
 ```
 
-Please view the demonstration video to see the app's functionality via the Insomnia app: [Demonstration Video](https://watch.screencastify.com/v/AHnafESpcjAOyx0X8alv)
+There are no HTTP endpoints for the app; it is strictly an API backend. Therefore, you will need to use an API client such as [Insomnia](https://insomnia.rest/) or [Postman](https://www.postman.com/). I created a collection of API requests in Insomnia and exported them. You can find them in the repo as "storeBackEnd_Insomnia_collection.json". Import this collection into Insomnia and then you can interact with the app. If you are running your own build of the app, you may have to change the "host" variable in the Insomnia environment.
+
+## Demonstration
+
+Please view the demonstration video to see the app's functionality via the Insomnia app: [Demonstration Video](https://drive.google.com/file/d/1QUTq7Kzz1MkckYk1s1RXqUa_nyfnF5yZ/view)
 
 ## License
 

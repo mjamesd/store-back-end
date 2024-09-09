@@ -4,7 +4,7 @@ const apiRoutes = require('./api');
 router.use('/api', apiRoutes);
 
 router.use((req, res) => {
-  res.send("<h1>Wrong Route!</h1>")
+  res.send('This app is strictly an API. Please use the API routes. See <a href="https://github.com/mjamesd/store-back-end" target="_blank">the repo</a>\'s README for more information.')
 });
 
 module.exports = router;
